@@ -6,12 +6,40 @@ function App() {
 
   return (
     <div className="App">
-      {
-        // <Counter></Counter>
-        <Users></Users>
-      }
+      <Users></Users>
+      <Comments></Comments>
     </div>
   );
+}
+
+// users Comments from json placeholder 
+function Comments() {
+  const [comments, setComments] = useState([])
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/comments')
+      .then(res => res.json())
+      .then(data => setComments(data));
+  }, [])
+  return (
+    <div>
+      {
+        comments.map(comment => <DisplayComment name={comment.name} body={comment.body}></DisplayComment>)
+      }
+      <h2>User Comments</h2>
+
+    </div>
+  );
+}
+
+// comments display in UI
+function DisplayComment(props) {
+  return (
+    <div className='comment'>
+      <h2>Title: {props.name}</h2>
+
+      <p>{props.body}</p>
+    </div>
+  )
 }
 
 // user data comes from jeson placeholder Api

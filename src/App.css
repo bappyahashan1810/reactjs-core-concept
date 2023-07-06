@@ -46,3 +46,11 @@
   color: whitesmoke;
   margin: 20px;
 }
+
+.comment {
+  background-color: chocolate;
+  border: 5px solid seagreen;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+}
